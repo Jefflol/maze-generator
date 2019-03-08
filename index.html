@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Maze Generator</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="buttons-container">
+      <div class="slidecontainer">
+        <span>Cell Size</span>
+        <br>
+        <input type="range" min="0" max="3" value="2" class="slider" id="cell-size">
+      </div>
+      <div class="slidecontainer">
+        <span>Horizontal Bias (0 - 1)</span>
+        <br>
+        <input type="range" min="0" max="100" value="0" class="slider" id="horizontal-bias">
+      </div>
+      <br>
+      <button id="generate">Generate</button>
+    </div>
+
+    <div class="container">
+      <h1>Maze Generator</h1>
+      <canvas id="canvas" width="555" height="555"></canvas>
+    </div>
+    <script src="index.js" charset="utf-8"></script>
+  </body>
+</html>
