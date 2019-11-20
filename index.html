@@ -6,24 +6,25 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <div class="buttons-container">
-      <div class="slidecontainer">
-        <span>Cell Size</span>
+    <div class="main">
+      <div class="options">
+        <h1 class="title">Maze Generator</h1>
+        <div class="options__slider">
+          <span class="options__slider-title">Cell Size</span>
+          <br>
+          <input class="slider" id="cell-size" type="range" min="0" max="3" value="2" >
+        </div>
+        <div class="options__slider">
+          <span class="options__slider-title">Horizontal Bias (0 - 1)</span>
+          <br>
+          <input class="slider" id="horizontal-bias" type="range" min="0" max="100" value="0" >
+        </div>
         <br>
-        <input type="range" min="0" max="3" value="2" class="slider" id="cell-size">
+        <button class="generate__button" id="generate">Generate</button>
       </div>
-      <div class="slidecontainer">
-        <span>Horizontal Bias (0 - 1)</span>
-        <br>
-        <input type="range" min="0" max="100" value="0" class="slider" id="horizontal-bias">
+      <div class="canvas">
+        <canvas id="canvas" width="555" height="555"></canvas>
       </div>
-      <br>
-      <button id="generate">Generate</button>
-    </div>
-
-    <div class="container">
-      <h1>Maze Generator</h1>
-      <canvas id="canvas" width="555" height="555"></canvas>
     </div>
     <script src="index.js" charset="utf-8"></script>
   </body>

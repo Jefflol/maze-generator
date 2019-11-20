@@ -1,5 +1,5 @@
 # Maze Generator
-* Control using the sliders and then generate!
+* Control using the sliders and then generate a maze!
 
 ## Algorithm
 **[Recursive Backtracking](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker)**

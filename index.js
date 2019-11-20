@@ -19,6 +19,12 @@ const SOUTH = 0b0010;
 const WEST = 0b0001;
 const NONE = 0b0000;
 
+const CELL_COLOUR_OLD = "#393E46";
+const CELL_COLOUR_NEW = "#00ADB5";
+const START_COLOUR = "#00635D";
+const END_COLOUR = "#D62246";
+const WALL_COLOUR = "#222831";
+
 var stack;                // Stack to hold cells
 var maze;                 // Grid to track visited cells
 var visitedCellCount;     // Keep counts of number of visited cells
@@ -41,7 +47,7 @@ function main() {
     current_cell = new Cell(next_cell.x, next_cell.y, dir_from);
     maze[current_cell.x][current_cell.y] = true;
     visitedCellCount++;
-    drawCell(current_cell, 'purple');
+    drawCell(current_cell, CELL_COLOUR_NEW);
     removeWalls(current_cell);
 
     next_cell = getRandomDirection(current_cell);
@@ -53,8 +59,8 @@ function main() {
     }
   } else {
     let start = {x: 0, y: 0, dir: NONE};
-    drawCell(start, 'red');
-    drawCell(end, 'green');
+    drawCell(start, START_COLOUR);
+    drawCell(end, END_COLOUR);
     removeWalls(end);
     clearInterval(interval);
   }
@@ -83,7 +89,7 @@ function generate() {
   current_cell = new Cell(0, 0, NONE);
   maze[current_cell.x][current_cell.y] = true;
   visitedCellCount++;
-  drawCell(current_cell, 'purple');
+  drawCell(current_cell, CELL_COLOUR_NEW);
   next_cell = getRandomDirection(current_cell);
 
   // Start loop
@@ -168,14 +174,14 @@ function getOppositeDirection(dir) {
 
 /* Removes walls of the neighbours the current cell can visit */
 function removeWalls(cell) {
-  if(((1 << 3) & cell.dir) != 0) removeWall(cell, NORTH, "purple");
-  if(((1 << 2) & cell.dir) != 0) removeWall(cell, EAST, "purple");
-  if(((1 << 1) & cell.dir) != 0) removeWall(cell, SOUTH, "purple");
-  if(((1 << 0) & cell.dir) != 0) removeWall(cell, WEST, "purple");
+  if(((1 << 3) & cell.dir) != 0) removeWall(cell, NORTH, CELL_COLOUR_NEW);
+  if(((1 << 2) & cell.dir) != 0) removeWall(cell, EAST, CELL_COLOUR_NEW);
+  if(((1 << 1) & cell.dir) != 0) removeWall(cell, SOUTH, CELL_COLOUR_NEW);
+  if(((1 << 0) & cell.dir) != 0) removeWall(cell, WEST, CELL_COLOUR_NEW);
 }
 
 /* Helper function to remove a side wall of a given cell */
-function removeWall(cell, side, color='blue') {
+function removeWall(cell, side, color=CELL_COLOUR_OLD) {
   ctx.beginPath();
   ctx.fillStyle = color;
 
@@ -200,7 +206,7 @@ function removeWall(cell, side, color='blue') {
 
 /* Draws the canvas */
 function drawCanvas() {
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = WALL_COLOUR;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -221,7 +227,7 @@ function drawGrid() {
 }
 
 /* Draws a single cell */
-function drawCell(cell, color='blue') {
+function drawCell(cell, color=CELL_COLOUR_OLD) {
   ctx.beginPath();
   ctx.fillStyle = color;
   ctx.fillRect(cell.x*(SQ + WALL_WIDTH) + WALL_WIDTH, cell.y*(SQ + WALL_WIDTH) + WALL_WIDTH, SQ, SQ);
