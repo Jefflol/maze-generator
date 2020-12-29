@@ -1,6 +1,8 @@
-# Maze Generator
+# [Maze Generator](https://maze-generator-jc.herokuapp.com/)
 * Control using the sliders and then generate a maze!
 * Try demo [here](https://maze-generator-jc.herokuapp.com/).
+
+![Maze Generator Demo](demo/maze-generator-demo.gif)
 
 ## Algorithm
 **[Recursive Backtracking](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker)**
